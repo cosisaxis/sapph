@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proposal</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url("background.jpeg");
+        background-size:contain; /* or contain, or specific dimensions */
+        background-repeat: repeat;
+        background-position: center;
+        /* overflow: hidden; */
+      }
+
+      #proposal-container {
+        text-align: center;
+        display: none;
+        position: relative;
+        
+      }
+
+      #message {
+        font-size: 24px;
+        color: white;
+        margin-bottom: 20px;
+        height: 50px;
+      }
+      p{
+        color: #fff;
+      }
+
+      #btn-show-proposal {
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: red;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+
+      #btn-yes,
+      #btn-no {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+
+      #heart-animation {
+        position: absolute;
+        font-size: 48px;
+        color: #ff0000;
+        display: none;
+        animation: heartbeat 1s infinite;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.2);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="proposal-container">
+      <p id="message">
+        Will you make me the happiest person alive and say 'Yes'?
+      </p>
+      <!-- <img
+        src="ring.png"
+        alt="Engagement Ring"
+        style="width: 200px; margin-top: 20px"
+      /> -->
+      <br />
+      <button id="btn-yes" onclick="showHeart()">Yes</button>
+      <button id="btn-no" onclick="sayNo()">No</button>
+      <div id="heart-animation">❤️</div>
+    </div>
+
+    <button id="btn-show-proposal" onclick="showProposal()">
+      Click me to reveal a special message
+    </button>
+
+    <script>
+      function showProposal() {
+        var proposalContainer = document.getElementById("proposal-container");
+        var btnShowProposal = document.getElementById("btn-show-proposal");
+    
+        // Hide the button
+        btnShowProposal.style.display = "none";
+    
+        // Display the proposal container
+        proposalContainer.style.display = "block";
+      }
+    
+      function showHearts() {
+        var heartContainer = document.getElementById("heart-container");
+        var numHearts = 10; // You can adjust the number of hearts as needed
+    
+        for (var i = 0; i < numHearts; i++) {
+          var heart = document.createElement("div");
+          heart.className = "heart";
+          heart.style.left = Math.random() * window.innerWidth + "px";
+          heart.style.animationDuration = Math.random() * 2 + 1 + "s";
+          heartContainer.appendChild(heart);
+        }
+      }
+    
+      function showHeart() {
+        var heartAnimation = document.getElementById("heart-animation");
+    
+        // Display the heart animation
+        heartAnimation.style.display = "block";
+        heartAnimation.style.fontSize = "150px"; // Set the size to 2 times bigger
+    
+        // Set the initial position under the buttons
+        heartAnimation.style.position = "absolute";
+        heartAnimation.style.left = "calc(50% - 95px)"; // Adjust the left position
+        heartAnimation.style.top = "calc(50% + 70px)"; // Adjust the top position
+    
+        // Hide the heart animation after 3 seconds
+        setTimeout(function () {
+          heartAnimation.style.display = "none";
+          showHearts(); // Call the function to show multiple hearts
+        }, 6000);
+      }
+    
+      function sayNo() {
+        alert("I understand. Take your time. ❤️");
+      }
+    </script>
+    
+
+  </body>
+</html>
